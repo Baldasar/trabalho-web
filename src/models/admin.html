@@ -113,6 +113,10 @@
         artigoForm.classList.add('hidden');
         usuarioForm.classList.remove('hidden');
     }
+
+    function redirectHome() {
+        window.location.href = "http://localhost:3000/";
+    }
 </script>
 
 <body>
@@ -121,6 +125,7 @@
         <div id="menu">
             <button onclick="showArtigoForm()">Cadastrar Artigo</button>
             <button onclick="showUsuarioForm()">Cadastrar Usuário</button>
+            <button onclick="redirectHome()">Voltar</button>
         </div>
         <div id="artigoForm" class="hidden">
             <form>
