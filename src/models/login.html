@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página de Login e Cadastro</title>
+    <script>
+        function redirectHome() {
+            window.location.href = "http://localhost:3000/";
+        }
+    </script>
 </head>
 
 <style>
@@ -95,6 +100,10 @@
                 <button type="submit" class="custom-button login-button">Entrar</button>
             </div>
         </form>
+        <br>
+        <button class="custom-button" onclick="redirectHome()">
+            Voltar
+        </button>
     </div>
 </body>
 

@@ -1,14 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script>
+        function navigate(code) {
+            if (code ===  404) {
+                window.location.href = "http://localhost:3000/404";
+            } else if (code ===  1) {
+                window.location.href = "http://localhost:3000/login";
+            }
+        };
+    </script>
 </head>
 
 <body>
-    home
+    <h1>HOME</h1>
+    <button onclick="navigate(1)">login</button>
+    <button onclick="navigate(404)">404</button>
 </body>
 
 </html>

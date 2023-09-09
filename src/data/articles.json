@@ -1,0 +1,31 @@
+{
+  "articles" : [{}],
+  "articles_exemple" : [
+    {
+      "kb_id": { "type": "string" },
+      "kb_title": { "type": "string" },
+      "kb_body": { "type": "string" },
+      "kb_permalink": { "type": "string" },
+      "kb_keywords": { "type": "string" },
+      "kb_liked_count": { "type": "integer" },
+      "kb_published": { "type": "boolean" },
+      "kb_suggestion": { "type": "boolean" },
+      "kb_featured": { "type": "boolean" },
+      "kb_author_email": { "type": "string" },
+      "kb_published_date": { "type": "date" }
+    },
+    {
+      "kb_id": "7a6cc1282c5f6ec0235acd2bfa780145aa2a67fd",
+      "kb_title": "Título 01",
+      "kb_body": "<p>Este artigo é um teste para uma base de conhecimento.</p>",
+      "kb_permalink": "titulo01",
+      "kb_keywords": "teste",
+      "kb_liked_count": "10",
+      "kb_published": "on",
+      "kb_suggestion": "on",
+      "kb_featured": "on",
+      "kb_author_email": "andre.ruaro@unesc.net",
+      "kb_published_date": "2023-08-30"
+    }
+  ]
+}

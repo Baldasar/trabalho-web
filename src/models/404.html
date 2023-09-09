@@ -1,10 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
+
 <head>
+  <meta charset="utf-8">
   <title>404 - Not Found</title>
+  <script>
+    function redirectHome() {
+      window.location.href = "http://localhost:3000/";
+    }
+  </script>
 </head>
+
 <body>
   <h1>Página não encontrada!</h1>
   <p>A página buscada não existe!</p>
+  <button onclick="redirectHome()">
+    Voltar
+  </button>
 </body>
+
 </html>
