@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criação</title>
+</head>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 {
+        text-align: center;
+        padding: 20px;
+        background-color: #333;
+        color: #fff;
+        margin-top: 0;
+    }
+
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    label {
+        margin-top: 10px;
+        font-weight: bold;
+    }
+
+    input[type="text"],
+    select {
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    select {
+        width: 100%;
+    }
+
+    /* Estilo para o botão "Enviar" */
+    button[type="submit"] {
+        background-color: #0056b3;
+        /* Cor mais escura */
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-top: 10px;
+        /* Espaço entre o último campo e o botão */
+    }
+
+    button[type="submit"]:hover {
+        background-color: #004092;
+        /* Cor mais escura no hover */
+    }
+
+    #menu {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    #menu button {
+        background-color: #555;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        margin: 0 10px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    #menu button:hover {
+        background-color: #333;
+    }
+
+    .hidden {
+        display: none;
+    }
+</style>
+
+<script>
+    function showArtigoForm() {
+        const artigoForm = document.getElementById('artigoForm');
+        const usuarioForm = document.getElementById('usuarioForm');
+        artigoForm.classList.remove('hidden');
+        usuarioForm.classList.add('hidden');
+    }
+
+    function showUsuarioForm() {
+        const artigoForm = document.getElementById('artigoForm');
+        const usuarioForm = document.getElementById('usuarioForm');
+        artigoForm.classList.add('hidden');
+        usuarioForm.classList.remove('hidden');
+    }
+</script>
+
+<body>
+    <h1>Criação</h1>
+    <div class="container">
+        <div id="menu">
+            <button onclick="showArtigoForm()">Cadastrar Artigo</button>
+            <button onclick="showUsuarioForm()">Cadastrar Usuário</button>
+        </div>
+        <div id="artigoForm" class="hidden">
+            <form>
+                <label for="kb_id">ID:</label>
+                <input type="text" id="kb_id" name="kb_id" required>
+
+                <label for="kb_title">Título:</label>
+                <input type="text" id="kb_title" name="kb_title" required>
+
+                <label for="kb_body">Corpo:</label>
+                <textarea id="kb_body" name="kb_body" required></textarea>
+
+                <label for="kb_permalink">Permalink:</label>
+                <input type="text" id="kb_permalink" name="kb_permalink" required>
+
+                <label for="kb_keywords">Palavras-chave:</label>
+                <input type="text" id="kb_keywords" name="kb_keywords" required>
+
+                <label for="kb_liked_count">Número de Curtidas:</label>
+                <input type="number" id="kb_liked_count" name="kb_liked_count" required>
+
+                <label for="kb_published">Publicado:</label>
+                <select id="kb_published" name="kb_published">
+                    <option value="on">On</option>
+                    <option value="off">Off</option>
+                </select>
+
+                <label for="kb_suggestion">Sugestão:</label>
+                <select id="kb_suggestion" name="kb_suggestion">
+                    <option value="on">On</option>
+                    <option value="off">Off</option>
+                </select>
+
+                <label for="kb_featured">Destaque:</label>
+                <select id="kb_featured" name="kb_featured">
+                    <option value="on">On</option>
+                    <option value="off">Off</option>
+                </select>
+
+                <label for="kb_author_email">E-mail do Autor:</label>
+                <input type="email" id="kb_author_email" name="kb_author_email" required>
+
+                <label for="kb_published_date">Data de Publicação:</label>
+                <input type="date" id="kb_published_date" name="kb_published_date" required>
+
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+        <div id="usuarioForm" class="hidden">
+            <form>
+                <label for="author_id">ID do Autor:</label>
+                <input type="text" id="author_id" name="author_id" required>
+
+                <label for="author_name">Nome do Autor:</label>
+                <input type="text" id="author_name" name="author_name" required>
+
+                <label for="author_email">E-mail do Autor:</label>
+                <input type="email" id="author_email" name="author_email" required>
+
+                <label for="author_user">Usuário do Autor:</label>
+                <input type="text" id="author_user" name="author_user" required>
+
+                <label for="author_pwd">Senha do Autor:</label>
+                <input type="password" id="author_pwd" name="author_pwd" required>
+
+                <label for="author_level">Nível do Autor:</label>
+                <select id="author_level" name="author_level" required>
+                    <option value="admin">Admin</option>
+                    <option value="editor">Editor</option>
+                    <option value="user">Usuário</option>
+                </select>
+
+                <label for="author_status">Status do Autor:</label>
+                <select id="author_status" name="author_status">
+                    <option value="on">On</option>
+                    <option value="off">Off</option>
+                </select>
+
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

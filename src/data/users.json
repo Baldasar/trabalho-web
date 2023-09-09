@@ -1,0 +1,11 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Lucas Baldasar Paquelin",
+      "username": "balda",
+      "email": "lucaspaquelin@gmail.com",
+      "password": "123"
+    }
+  ]
+}
