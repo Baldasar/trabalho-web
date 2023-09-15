@@ -1,31 +1,69 @@
 {
-  "articles" : [{}],
-  "articles_exemple" : [
+  "articles": [
     {
-      "kb_id": { "type": "string" },
-      "kb_title": { "type": "string" },
-      "kb_body": { "type": "string" },
-      "kb_permalink": { "type": "string" },
-      "kb_keywords": { "type": "string" },
-      "kb_liked_count": { "type": "integer" },
-      "kb_published": { "type": "boolean" },
-      "kb_suggestion": { "type": "boolean" },
-      "kb_featured": { "type": "boolean" },
-      "kb_author_email": { "type": "string" },
-      "kb_published_date": { "type": "date" }
+      "kb_id": "1a2b3c4d5e6f7g8h9i0j",
+      "kb_title": "Como fazer bolo de chocolate",
+      "kb_body": "<p>Aqui está uma receita simples para fazer um delicioso bolo de chocolate.</p>",
+      "kb_permalink": "bolo-de-chocolate",
+      "kb_keywords": "receita, bolo, chocolate",
+      "kb_liked_count": 25,
+      "kb_published": true,
+      "kb_suggestion": false,
+      "kb_featured": true,
+      "kb_author_email": "maria@example.com",
+      "kb_published_date": "2023-09-10"
     },
     {
-      "kb_id": "7a6cc1282c5f6ec0235acd2bfa780145aa2a67fd",
-      "kb_title": "Título 01",
-      "kb_body": "<p>Este artigo é um teste para uma base de conhecimento.</p>",
-      "kb_permalink": "titulo01",
-      "kb_keywords": "teste",
-      "kb_liked_count": "10",
-      "kb_published": "on",
-      "kb_suggestion": "on",
-      "kb_featured": "on",
-      "kb_author_email": "andre.ruaro@unesc.net",
-      "kb_published_date": "2023-08-30"
+      "kb_id": "9z8y7x6w5v4u3t2s1r0q",
+      "kb_title": "Dicas de jardinagem",
+      "kb_body": "<p>Confira essas dicas úteis para cuidar do seu jardim.</p>",
+      "kb_permalink": "dicas-de-jardinagem",
+      "kb_keywords": "jardinagem, dicas, plantas",
+      "kb_liked_count": 8,
+      "kb_published": true,
+      "kb_suggestion": true,
+      "kb_featured": false,
+      "kb_author_email": "joao@example.com",
+      "kb_published_date": "2023-09-05"
+    },
+    {
+      "kb_id": "3q1w5e7r9t0y2u4i6o8p",
+      "kb_title": "Melhores destinos para férias na praia",
+      "kb_body": "<p>Descubra os destinos mais deslumbrantes para suas próximas férias na praia.</p>",
+      "kb_permalink": "destinos-ferias-na-praia",
+      "kb_keywords": "praia, férias, viagem",
+      "kb_liked_count": 45,
+      "kb_published": true,
+      "kb_suggestion": false,
+      "kb_featured": true,
+      "kb_author_email": "ana@example.com",
+      "kb_published_date": "2023-09-12"
+    },
+    {
+      "kb_id": "4b3v2n1m0x9z8a7k6l5j",
+      "kb_title": "Técnicas avançadas de programação em Python",
+      "kb_body": "<p>Aprenda algumas técnicas avançadas para aprimorar suas habilidades de programação em Python.</p>",
+      "kb_permalink": "tecnicas-python-avancadas",
+      "kb_keywords": "Python, programação, técnicas avançadas",
+      "kb_liked_count": 30,
+      "kb_published": true,
+      "kb_suggestion": false,
+      "kb_featured": true,
+      "kb_author_email": "carlos@example.com",
+      "kb_published_date": "2023-09-08"
+    },
+    {
+      "kb_id": "5m4n3o2p1q0r9l8k7j6h",
+      "kb_title": "Receitas saudáveis para o café da manhã",
+      "kb_body": "<p>Experimente essas receitas deliciosas e saudáveis para começar o dia com energia.</p>",
+      "kb_permalink": "receitas-cafe-da-manha",
+      "kb_keywords": "receitas, café da manhã, saudável",
+      "kb_liked_count": 15,
+      "kb_published": true,
+      "kb_suggestion": true,
+      "kb_featured": false,
+      "kb_author_email": "lucia@example.com",
+      "kb_published_date": "2023-09-03"
     }
   ]
 }
