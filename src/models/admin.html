@@ -47,12 +47,11 @@
     }
 
     .container {
-        max-width: 600px;
-        margin: 20px auto;
-        padding: 20px;
+        width: 100%;
+        height: 100vh;
         background-color: #fff;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+        box-sizing: border-box;
     }
 
     form {
@@ -117,9 +116,62 @@
     .hidden {
         display: none;
     }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th,
+    td {
+        padding: 10px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #333;
+        color: #fff;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
 </style>
 
 <script>
+    function teste() {
+        fetch('/articles')
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.getElementById('tableBody');
+                tableBody.innerHTML = '';
+                data.forEach(article => {
+                    const row = document.createElement('tr');
+
+                    row.innerHTML = `
+                            <td>${article.kb_id}</td>
+                            <td>${article.kb_title}</td>
+                            <td>${article.kb_body}</td>
+                            <td>${article.kb_permalink}</td>
+                            <td>${article.kb_keywords}</td>
+                            <td>${article.kb_liked_count}</td>
+                            <td>${article.kb_published}</td>
+                            <td>${article.kb_suggestion}</td>
+                            <td>${article.kb_featured}</td>
+                            <td>${article.kb_author_email}</td>
+                            <td>${article.kb_published_date}</td>
+                        `;
+
+                    tableBody.appendChild(row);
+                });
+                document.getElementById('resultTable').classList.remove('hidden');
+            })
+            .catch(error => {
+                console.error('Erro ao buscar os artigos:', error);
+            });
+    }
+
     function showArtigoForm() {
         const artigoForm = document.getElementById('artigoForm');
         const usuarioForm = document.getElementById('usuarioForm');
@@ -148,12 +200,11 @@
         <div id="menu">
             <button class="menu-button" onclick="showArtigoForm()">Cadastrar Artigo</button>
             <button class="menu-button" onclick="showUsuarioForm()">Cadastrar Usuário</button>
+            <button class="menu-button" onclick="teste()">Listar Artigo</button>
+            <button class="menu-button" onclick="teste()">Listar Usuário</button>
         </div>
         <div id="artigoForm" class="hidden">
             <form>
-                <label for="kb_id">ID:</label>
-                <input type="text" id="kb_id" name="kb_id" required>
-
                 <label for="kb_title">Título:</label>
                 <input type="text" id="kb_title" name="kb_title" required>
 
@@ -198,9 +249,6 @@
         </div>
         <div id="usuarioForm" class="hidden">
             <form>
-                <label for="author_id">ID do Autor:</label>
-                <input type="text" id="author_id" name="author_id" required>
-
                 <label for="author_name">Nome do Autor:</label>
                 <input type="text" id="author_name" name="author_name" required>
 
@@ -228,6 +276,29 @@
 
                 <button type="submit">Enviar</button>
             </form>
+        </div>
+
+        <div id="resultTable" class="hidden">
+            <table>
+                <thead>
+                    <tr>
+                        <th>kb_id</th>
+                        <th>kb_title</th>
+                        <th>kb_body</th>
+                        <th>kb_permalink</th>
+                        <th>kb_keywords</th>
+                        <th>kb_liked_count</th>
+                        <th>kb_published</th>
+                        <th>kb_suggestion</th>
+                        <th>kb_featured</th>
+                        <th>kb_author_email</th>
+                        <th>kb_published_date</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <!-- As linhas da tabela serão inseridas aqui pelo JavaScript -->
+                </tbody>
+            </table>
         </div>
     </div>
 </body>
