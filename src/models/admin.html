@@ -20,7 +20,7 @@
         padding: 20px;
         background-color: #333;
         color: #fff;
-        margin-top: 0;
+        margin: 0;
     }
 
     header {
@@ -48,7 +48,7 @@
 
     .container {
         max-width: 600px;
-        margin: 0 auto;
+        margin: 20px auto;
         padding: 20px;
         background-color: #fff;
         border-radius: 10px;
@@ -66,7 +66,8 @@
     }
 
     input[type="text"],
-    select {
+    select,
+    textarea {
         padding: 10px;
         margin-top: 5px;
         border: 1px solid #ccc;
@@ -98,7 +99,7 @@
         margin-bottom: 20px;
     }
 
-    #menu button {
+    .menu-button {
         background-color: #555;
         color: #fff;
         padding: 10px 20px;
@@ -109,7 +110,7 @@
         transition: background-color 0.3s ease;
     }
 
-    #menu button:hover {
+    .menu-button:hover {
         background-color: #333;
     }
 
@@ -145,8 +146,8 @@
     </header>
     <div class="container">
         <div id="menu">
-            <button onclick="showArtigoForm()">Cadastrar Artigo</button>
-            <button onclick="showUsuarioForm()">Cadastrar Usuário</button>
+            <button class="menu-button" onclick="showArtigoForm()">Cadastrar Artigo</button>
+            <button class="menu-button" onclick="showUsuarioForm()">Cadastrar Usuário</button>
         </div>
         <div id="artigoForm" class="hidden">
             <form>
