@@ -5,11 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página de Login e Cadastro</title>
-    <script>
-        function redirectHome() {
-            window.location.href = "http://localhost:3000/";
-        }
-    </script>
 </head>
 
 <style>
@@ -69,17 +64,24 @@
         background-color: #007bff;
     }
 
-    .button-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: 20px;
-    }
-
-    .custom-button:hover {
+    .login-button:hover {
         background-color: #0056b3;
     }
+
+    .signup-button {
+        background-color: #28a745;
+    }
+
+    .signup-button:hover {
+        background-color: #1d923b;
+    }
 </style>
+
+<script>
+    function goToHome() {
+        window.location.href = "http://localhost:3000/";
+    }
+</script>
 
 <body>
     <div class="container">
@@ -97,13 +99,10 @@
             </div>
 
             <div class="button-container">
+                <button type="button" class="custom-button signup-button" onclick="goToHome()">Voltar (Home)</button>
                 <button type="submit" class="custom-button login-button">Entrar</button>
             </div>
         </form>
-        <br>
-        <button class="custom-button" onclick="redirectHome()">
-            Voltar
-        </button>
     </div>
 </body>
 
