@@ -58,8 +58,6 @@ app.post("/login", (req, res) => {
     (user) => user.username === username && user.password === password
   );
 
-  console.log(user);
-
   if (!user) {
     res.redirect("/login");
   } else {
