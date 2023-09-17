@@ -8,7 +8,7 @@ const getUsers = () => {
 
         return parsedArquivo.users;
     } catch (error) {
-        return [];
+        return error;
     }
 }
 
