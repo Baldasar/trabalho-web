@@ -132,6 +132,10 @@
     th {
         background-color: #333;
         color: #fff;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 200px;
     }
 
     tr:nth-child(even) {
@@ -140,7 +144,31 @@
 </style>
 
 <script>
-    function teste() {
+    function goToHome() {
+        window.location.href = "http://localhost:3000/home";
+    }
+
+    function getArticles() {
+        const articleForm = document.getElementById('articleForm');
+        const userForm = document.getElementById('userForm');
+        const articlesTable = document.getElementById('articlesTable');
+        const usersTable = document.getElementById('usersTable');
+
+        const converterDataParaBrasileira = (data) => {
+            const partes = data.split('-');
+            if (partes.length === 3) {
+                const [ano, mes, dia] = partes;
+                return `${dia}/${mes}/${ano}`;
+            } else {
+                return data;
+            }
+        }
+
+        articleForm.classList.add('hidden');
+        userForm.classList.add('hidden');
+        articlesTable.classList.remove('hidden');
+        usersTable.classList.add('hidden');
+
         fetch('/articles')
             .then(response => response.json())
             .then(data => {
@@ -150,44 +178,175 @@
                     const row = document.createElement('tr');
 
                     row.innerHTML = `
-                            <td>${article.kb_id}</td>
-                            <td>${article.kb_title}</td>
-                            <td>${article.kb_body}</td>
-                            <td>${article.kb_permalink}</td>
-                            <td>${article.kb_keywords}</td>
-                            <td>${article.kb_liked_count}</td>
-                            <td>${article.kb_published}</td>
-                            <td>${article.kb_suggestion}</td>
-                            <td>${article.kb_featured}</td>
-                            <td>${article.kb_author_email}</td>
-                            <td>${article.kb_published_date}</td>
-                        `;
+                        <td>${article.kb_id}</td>
+                        <td>${article.kb_title}</td>
+                        <td>${article.kb_body}</td>
+                        <td>${article.kb_permalink}</td>
+                        <td>${article.kb_keywords}</td>
+                        <td>${article.kb_liked_count}</td>
+                        <td>${article.kb_published ? "on" : "off"}</td>
+                        <td>${article.kb_suggestion ? "on" : "off"}</td>
+                        <td>${article.kb_featured ? "on" : "off"}</td>
+                        <td>${article.kb_author_email}</td>
+                        <td>${converterDataParaBrasileira(article.kb_published_date)}</td>
+                    `;
 
                     tableBody.appendChild(row);
                 });
-                document.getElementById('resultTable').classList.remove('hidden');
             })
             .catch(error => {
                 console.error('Erro ao buscar os artigos:', error);
             });
     }
 
-    function showArtigoForm() {
-        const artigoForm = document.getElementById('artigoForm');
-        const usuarioForm = document.getElementById('usuarioForm');
-        artigoForm.classList.remove('hidden');
-        usuarioForm.classList.add('hidden');
+    function getUsers() {
+        const articleForm = document.getElementById('articleForm');
+        const userForm = document.getElementById('userForm');
+        const articlesTable = document.getElementById('articlesTable');
+        const usersTable = document.getElementById('usersTable');
+
+        const obterTipoUsuario = (numero) => {
+            switch (numero) {
+                case 1:
+                    return 'Admin';
+                case 2:
+                    return 'Editor';
+                case 3:
+                    return 'Usuário';
+            }
+        }
+
+        articleForm.classList.add('hidden');
+        userForm.classList.add('hidden');
+        articlesTable.classList.add('hidden');
+        usersTable.classList.remove('hidden');
+
+        fetch('/users')
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.getElementById('userTableBody');
+                tableBody.innerHTML = '';
+                data.forEach(user => {
+                    const row = document.createElement('tr');
+
+                    row.innerHTML = `
+                            <td>${user.author_id}</td>
+                            <td>${user.author_name}</td>
+                            <td>${user.author_email}</td>
+                            <td>${user.author_user}</td>
+                            <td>${user.author_pwd}</td>
+                            <td>${obterTipoUsuario(user.author_level)}</td>
+                            <td>${user.author_status ? "on" : "off"}</td>
+                        `;
+
+                    tableBody.appendChild(row);
+                });
+            })
+            .catch(error => {
+                console.error('Erro ao buscar os usuários:', error);
+            });
     }
 
-    function showUsuarioForm() {
-        const artigoForm = document.getElementById('artigoForm');
-        const usuarioForm = document.getElementById('usuarioForm');
-        artigoForm.classList.add('hidden');
-        usuarioForm.classList.remove('hidden');
+    function showArticleForm() {
+        const articleForm = document.getElementById('articleForm');
+        const userForm = document.getElementById('userForm');
+        const articlesTable = document.getElementById('articlesTable');
+        const usersTable = document.getElementById('usersTable');
+
+        articleForm.classList.remove('hidden');
+        userForm.classList.add('hidden');
+        articlesTable.classList.add('hidden');
+        usersTable.classList.add('hidden');
     }
 
-    function goToHome() {
-        window.location.href = "http://localhost:3000/home";
+    function showUserForm() {
+        const articleForm = document.getElementById('articleForm');
+        const userForm = document.getElementById('userForm');
+        const articlesTable = document.getElementById('articlesTable');
+        const usersTable = document.getElementById('usersTable');
+
+        articleForm.classList.add('hidden');
+        userForm.classList.remove('hidden');
+        articlesTable.classList.add('hidden');
+        usersTable.classList.add('hidden');
+    }
+
+    function submitUserForm(event) {
+        event.preventDefault();
+
+        const author_name = document.getElementById('author_name').value;
+        const author_email = document.getElementById('author_email').value;
+        const author_user = document.getElementById('author_user').value;
+        const author_pwd = document.getElementById('author_pwd').value;
+        const author_level = document.getElementById('author_level').value;
+        const author_status = document.getElementById('author_status').value;
+
+        const newUser = {
+            author_name,
+            author_email,
+            author_user,
+            author_pwd,
+            author_level: parseInt(author_level),
+            author_status: author_status === 'true' ? true : false,
+        };
+
+        fetch('/users', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newUser),
+        })
+            .then(response => response.json())
+            .then(data => {
+                alert('Usuário criado com sucesso!')
+            })
+            .catch(error => {
+                console.error('Erro ao criar o usuário:', error);
+            });
+    }
+
+    function submitArticleForm(event) {
+        event.preventDefault();
+
+        const kb_title = document.getElementById('kb_title').value;
+        const kb_body = document.getElementById('kb_body').value;
+        const kb_permalink = document.getElementById('kb_permalink').value;
+        const kb_keywords = document.getElementById('kb_keywords').value;
+        const kb_liked_count = document.getElementById('kb_liked_count').value;
+        const kb_published = document.getElementById('kb_published').value;
+        const kb_suggestion = document.getElementById('kb_suggestion').value;
+        const kb_featured = document.getElementById('kb_featured').value;
+        const kb_author_email = document.getElementById('kb_author_email').value;
+        const kb_published_date = document.getElementById('kb_published_date').value;
+
+        const newArticle = {
+            kb_title,
+            kb_body,
+            kb_permalink,
+            kb_keywords,
+            kb_liked_count: parseInt(kb_liked_count),
+            kb_published: kb_published === 'true' ? true : false,
+            kb_suggestion: kb_suggestion === 'true' ? true : false,
+            kb_featured: kb_featured === 'true' ? true : false,
+            kb_author_email,
+            kb_published_date,
+        };
+
+        fetch('/articles', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newArticle),
+        })
+            .then(response => response.json())
+            .then(data => {
+                alert('Artigo criado com sucesso!')
+            })
+            .catch(error => {
+                console.error('Erro ao criar o artigo:', error);
+            });
     }
 </script>
 
@@ -198,13 +357,14 @@
     </header>
     <div class="container">
         <div id="menu">
-            <button class="menu-button" onclick="showArtigoForm()">Cadastrar Artigo</button>
-            <button class="menu-button" onclick="showUsuarioForm()">Cadastrar Usuário</button>
-            <button class="menu-button" onclick="teste()">Listar Artigo</button>
-            <button class="menu-button" onclick="teste()">Listar Usuário</button>
+            <button class="menu-button" onclick="showArticleForm()">Cadastrar Artigo</button>
+            <button class="menu-button" onclick="showUserForm()">Cadastrar Usuário</button>
+            <button class="menu-button" onclick="getArticles()">Listar Artigo</button>
+            <button class="menu-button" onclick="getUsers()">Listar Usuário</button>
         </div>
-        <div id="artigoForm" class="hidden">
-            <form>
+
+        <div id="articleForm" class="hidden">
+            <form onsubmit="submitArticleForm(event)">
                 <label for="kb_title">Título:</label>
                 <input type="text" id="kb_title" name="kb_title" required>
 
@@ -222,20 +382,20 @@
 
                 <label for="kb_published">Publicado:</label>
                 <select id="kb_published" name="kb_published">
-                    <option value="on">On</option>
-                    <option value="off">Off</option>
+                    <option value="true">On</option>
+                    <option value="false">Off</option>
                 </select>
 
                 <label for="kb_suggestion">Sugestão:</label>
                 <select id="kb_suggestion" name="kb_suggestion">
-                    <option value="on">On</option>
-                    <option value="off">Off</option>
+                    <option value="true">On</option>
+                    <option value="false">Off</option>
                 </select>
 
                 <label for="kb_featured">Destaque:</label>
                 <select id="kb_featured" name="kb_featured">
-                    <option value="on">On</option>
-                    <option value="off">Off</option>
+                    <option value="true">On</option>
+                    <option value="false">Off</option>
                 </select>
 
                 <label for="kb_author_email">E-mail do Autor:</label>
@@ -247,8 +407,9 @@
                 <button type="submit">Enviar</button>
             </form>
         </div>
-        <div id="usuarioForm" class="hidden">
-            <form>
+
+        <div id="userForm" class="hidden">
+            <form onsubmit="submitUserForm(event)">
                 <label for="author_name">Nome do Autor:</label>
                 <input type="text" id="author_name" name="author_name" required>
 
@@ -263,40 +424,57 @@
 
                 <label for="author_level">Nível do Autor:</label>
                 <select id="author_level" name="author_level" required>
-                    <option value="admin">Admin</option>
-                    <option value="editor">Editor</option>
-                    <option value="user">Usuário</option>
+                    <option value="1">Admin</option>
+                    <option value="2">Editor</option>
+                    <option value="3">Usuário</option>
                 </select>
 
                 <label for="author_status">Status do Autor:</label>
                 <select id="author_status" name="author_status">
-                    <option value="on">On</option>
-                    <option value="off">Off</option>
+                    <option value="true">On</option>
+                    <option value="false">Off</option>
                 </select>
 
                 <button type="submit">Enviar</button>
             </form>
         </div>
 
-        <div id="resultTable" class="hidden">
+        <div id="articlesTable" class="hidden">
             <table>
                 <thead>
                     <tr>
-                        <th>kb_id</th>
-                        <th>kb_title</th>
-                        <th>kb_body</th>
-                        <th>kb_permalink</th>
-                        <th>kb_keywords</th>
-                        <th>kb_liked_count</th>
-                        <th>kb_published</th>
-                        <th>kb_suggestion</th>
-                        <th>kb_featured</th>
-                        <th>kb_author_email</th>
-                        <th>kb_published_date</th>
+                        <th>id</th>
+                        <th>Título</th>
+                        <th>Corpo</th>
+                        <th>Permalink</th>
+                        <th>Palavras-chave</th>
+                        <th>Número de Curtidas</th>
+                        <th>Publicado</th>
+                        <th>Sugestão</th>
+                        <th>Destaque</th>
+                        <th>E-mail do Autor</th>
+                        <th>Data de Publicação</th>
                     </tr>
                 </thead>
                 <tbody id="tableBody">
-                    <!-- As linhas da tabela serão inseridas aqui pelo JavaScript -->
+                </tbody>
+            </table>
+        </div>
+
+        <div id="usersTable" class="hidden">
+            <table>
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>Nome</th>
+                        <th>E-mail</th>
+                        <th>Usuário</th>
+                        <th>Senha</th>
+                        <th>Nível</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="userTableBody">
                 </tbody>
             </table>
         </div>
