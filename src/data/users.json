@@ -1,18 +1,40 @@
 {
-  "users": [
-    {
-      "id": 1,
-      "name": "Lucas Baldasar Paquelin",
-      "username": "balda",
-      "email": "lucaspaquelin@gmail.com",
-      "password": "123"
-    },
-    {
-      "id": 2,
-      "name": "Leonardo Oenning Spilere",
-      "username": "osleo",
-      "email": "leospilere@gmail.com",
-      "password": "123"
-    }
-  ]
+    "users": [
+        {
+            "author_id": "9rZpYvA3sWx2",
+            "author_name": "Lucas Baldasar Paquelin",
+            "author_email": "lucaspaquelin@gmail.com",
+            "author_user": "balda",
+            "author_pwd": "123",
+            "author_level": 1,
+            "author_status": true
+        },
+        {
+            "author_id": "NfEjTbC8oKm1",
+            "author_name": "Leonardo Oenning Spilere",
+            "author_email": "leospilere@gmail.com",
+            "author_user": "osleo",
+            "author_pwd": "123",
+            "author_level": 1,
+            "author_status": true
+        },
+        {
+            "author_id": "Uq1z4Pm8XoYh",
+            "author_name": "Paulo Dos Santos",
+            "author_email": "paulo@gmail.com",
+            "author_user": "paulos",
+            "author_pwd": "12345",
+            "author_level": 1,
+            "author_status": true
+        },
+        {
+            "author_id": "4CjXiTH5Zmyp",
+            "author_name": "Maria Aparecida",
+            "author_email": "maria@gmail.com",
+            "author_user": "maria_apa",
+            "author_pwd": "345",
+            "author_level": 1,
+            "author_status": false
+        }
+    ]
 }
