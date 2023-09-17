@@ -3,7 +3,7 @@
     {
       "kb_id": "Xh7YtR9z4A1w",
       "kb_title": "Como fazer bolo de chocolate",
-      "kb_body": "<p>Aqui está uma receita simples para fazer um delicioso bolo de chocolate.</p>",
+      "kb_body": "Aqui está uma receita simples para fazer um delicioso bolo de chocolate.",
       "kb_permalink": "bolo-de-chocolate",
       "kb_keywords": "receita, bolo, chocolate",
       "kb_liked_count": 25,
@@ -16,7 +16,7 @@
     {
       "kb_id": "6FbP2eGvQsJn",
       "kb_title": "Dicas de jardinagem",
-      "kb_body": "<p>Confira essas dicas úteis para cuidar do seu jardim.</p>",
+      "kb_body": "Confira essas dicas úteis para cuidar do seu jardim.",
       "kb_permalink": "dicas-de-jardinagem",
       "kb_keywords": "jardinagem, dicas, plantas",
       "kb_liked_count": 8,
@@ -29,7 +29,7 @@
     {
       "kb_id": "KtW3dA7zYq1x",
       "kb_title": "Melhores destinos para férias na praia",
-      "kb_body": "<p>Descubra os destinos mais deslumbrantes para suas próximas férias na praia.</p>",
+      "kb_body": "Descubra os destinos mais deslumbrantes para suas próximas férias na praia.",
       "kb_permalink": "destinos-ferias-na-praia",
       "kb_keywords": "praia, férias, viagem",
       "kb_liked_count": 45,
@@ -42,20 +42,20 @@
     {
       "kb_id": "8sVnRfDpZb2T",
       "kb_title": "Técnicas avançadas de programação em Python",
-      "kb_body": "<p>Aprenda algumas técnicas avançadas para aprimorar suas habilidades de programação em Python.</p>",
+      "kb_body": "Aprenda algumas técnicas avançadas para aprimorar suas habilidades de programação em Python.",
       "kb_permalink": "tecnicas-python-avancadas",
       "kb_keywords": "Python, programação, técnicas avançadas",
       "kb_liked_count": 30,
       "kb_published": true,
       "kb_suggestion": false,
-      "kb_featured": true,
+      "kb_featured": false,
       "kb_author_email": "carlos@example.com",
       "kb_published_date": "2023-09-08"
     },
     {
       "kb_id": "QmX5lC4oPnVj",
       "kb_title": "Receitas saudáveis para o café da manhã",
-      "kb_body": "<p>Experimente essas receitas deliciosas e saudáveis para começar o dia com energia.</p>",
+      "kb_body": "Experimente essas receitas deliciosas e saudáveis para começar o dia com energia.",
       "kb_permalink": "receitas-cafe-da-manha",
       "kb_keywords": "receitas, café da manhã, saudável",
       "kb_liked_count": 15,
