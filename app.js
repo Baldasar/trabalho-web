@@ -114,6 +114,35 @@ app.post("/articles", (req, res) => {
   res.status(201).json(newArticle);
 });
 
+app.post("/articles/:id/like", (req, res) => {
+  const id = req.params.id;
+
+  const getArticles = () => {
+    try {
+      const arquivo = fs.readFileSync("./src/data/articles.json", "utf-8");
+
+      const parsedArquivo = JSON.parse(arquivo);
+
+      return parsedArquivo.articles;
+    } catch (error) {
+      return error;
+    }
+  }
+
+  const articles = getArticles();
+  const article = articles.find(a => a.kb_id === id);
+
+  if (article) {
+    article.kb_liked_count++;
+    const saveArticles = JSON.stringify({ articles });
+    fs.writeFileSync("./src/data/articles.json", saveArticles);
+
+    res.json({ kb_liked_count: article.kb_liked_count });
+  } else {
+    res.status(404).json({ error: "Artigo não encontrado" });
+  }
+});
+
 app.post("/users", (req, res) => {
   const { author_name, author_email, author_user, author_pwd, author_level, author_status } = req.body;
 
