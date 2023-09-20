@@ -61,7 +61,6 @@
         border: 1px solid #ddd;
         border-radius: 5px;
         width: 45%;
-        height: 13rem;
         display: inline-flex;
         flex-flow: column wrap;
         align-items: center;
@@ -72,6 +71,24 @@
     #most-liked-articles {
         text-align: center;
     }
+
+    .read-button {
+        background-color: #fff;
+        color: #007bff;
+        border: 2px solid #007bff;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 16px;
+        border-radius: 5px ;
+        transition: 0.3s;
+        width: 150px;
+    }
+
+    .read-button:hover {
+        background-color: #007bff;
+        color: #fff;
+    }
+
 
     .like-button {
         background-color: #28a745;
@@ -88,6 +105,48 @@
 
     .like-button:hover {
         background-color: #218838;
+    }
+
+    .dialog {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .dialog-content {
+        background-color: #fff;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 70%;
+    }
+
+    .close-button {
+        color: #aaa;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .close-button:hover{
+        color: #333;
+    }
+
+    #like-button-dialog {
+        display: inline-block;
+        margin: 2rem 2rem;
+    }
+
+    #like-count-dialog {
+        display: inline-block;
+        margin: 0 2rem;
     }
 </style>
 
@@ -137,20 +196,24 @@
         likeCount.textContent = `Curtidas: ${article.kb_liked_count}`;
         likeCount.id = `like-count-${article.kb_id}`;
 
-        const space = document.createTextNode(" ");
-
         const likeButton = document.createElement('button');
         likeButton.textContent = 'Curtir';
         likeButton.classList.add('like-button');
-        likeButton.dataset.id = article.kb_id; // Adiciona o ID como um atributo de dados
+        likeButton.dataset.id = article.kb_id;
         likeButton.addEventListener('click', () => {
             likeArticle(article.kb_id);
         });
 
+        const readButton = document.createElement('button');
+        readButton.textContent = 'Leia Mais';
+        readButton.classList.add('read-button');
+        readButton.addEventListener('click', () => {
+            showArticleContent(article);
+        });
+
         articleDiv.appendChild(title);
-        articleDiv.appendChild(content);
+        articleDiv.appendChild(readButton);
         articleDiv.appendChild(likeButton);
-        articleDiv.appendChild(space);
         articleDiv.appendChild(likeCount);
 
         return articleDiv;
@@ -174,6 +237,43 @@
     function goToLogin() {
         window.location.href = "http://localhost:3000/login";
     }
+
+    function showArticleContent(article) {
+        const articleContent = document.getElementById('article-content');
+        articleContent.innerHTML = article.kb_body;
+
+        const likeButtonDialog = document.getElementById('like-button-dialog');
+        const likeCountDialog = document.getElementById('like-count-dialog');
+
+        likeButtonDialog.dataset.id = article.kb_id;
+        likeButtonDialog.addEventListener('click', () => {
+            likeArticleDialog(article.kb_id, likeCountDialog);
+        });
+
+        const dialog = document.getElementById('article-dialog');
+        dialog.style.display = 'block';
+
+        fetch(`/articles/${article.kb_id}/like`)
+            .then(response => response.json())
+            .then(data => {
+                likeCountDialog.textContent = `Curtidas: ${data.kb_liked_count}`;
+            });
+    }
+
+    function likeArticleDialog(id, likeCountElement) {
+        fetch(`/articles/${id}/like`, {
+            method: 'POST'
+        })
+            .then(response => response.json())
+            .then(data => {
+                likeCountElement.textContent = `Curtidas: ${data.kb_liked_count}`;
+            });
+    }
+
+    function closeDialog() {
+        const dialog = document.getElementById('article-dialog');
+        dialog.style.display = 'none';
+    }
 </script>
 
 <body>
@@ -194,6 +294,18 @@
     <div id="articles">
         <h2>Artigos</h2>
     </div>
+
+    <div id="article-dialog" class="dialog">
+        <div class="dialog-content">
+            <span id="close-dialog" class="close-button" onclick="closeDialog()">&times;</span>
+            <div id="article-content"></div>
+            <div>
+                <button id="like-button-dialog" class="like-button" onclick="likeArticleDialog()">Curtir</button>
+                <span id="like-count-dialog">Curtidas: 0</span>
+            </div>
+        </div>
+    </div>    
+    
 </body>
 
 </html>

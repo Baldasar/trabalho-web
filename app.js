@@ -1,5 +1,4 @@
 const getUsers = require("./src/middleware/auth");
-
 const express = require("express");
 const bodyParser = require("body-parser");
 const session = require("express-session");
