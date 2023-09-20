@@ -1,1 +1,69 @@
-{"articles":[{"kb_id":"Xh7YtR9z4A1w","kb_title":"Como fazer bolo de chocolate","kb_body":"Aqui está uma receita simples para fazer um delicioso bolo de chocolate.","kb_permalink":"bolo-de-chocolate","kb_keywords":"receita, bolo, chocolate","kb_liked_count":47,"kb_published":true,"kb_suggestion":false,"kb_featured":true,"kb_author_email":"maria@example.com","kb_published_date":"2023-09-10"},{"kb_id":"6FbP2eGvQsJn","kb_title":"Dicas de jardinagem","kb_body":"Confira essas dicas úteis para cuidar do seu jardim.","kb_permalink":"dicas-de-jardinagem","kb_keywords":"jardinagem, dicas, plantas","kb_liked_count":18,"kb_published":true,"kb_suggestion":true,"kb_featured":false,"kb_author_email":"joao@example.com","kb_published_date":"2023-09-05"},{"kb_id":"KtW3dA7zYq1x","kb_title":"Melhores destinos para férias na praia","kb_body":"Descubra os destinos mais deslumbrantes para suas próximas férias na praia.","kb_permalink":"destinos-ferias-na-praia","kb_keywords":"praia, férias, viagem","kb_liked_count":60,"kb_published":true,"kb_suggestion":false,"kb_featured":true,"kb_author_email":"ana@example.com","kb_published_date":"2023-09-12"},{"kb_id":"8sVnRfDpZb2T","kb_title":"Técnicas avançadas de programação em Python","kb_body":"Aprenda algumas técnicas avançadas para aprimorar suas habilidades de programação em Python.","kb_permalink":"tecnicas-python-avancadas","kb_keywords":"Python, programação, técnicas avançadas","kb_liked_count":43,"kb_published":true,"kb_suggestion":false,"kb_featured":false,"kb_author_email":"carlos@example.com","kb_published_date":"2023-09-08"},{"kb_id":"QmX5lC4oPnVj","kb_title":"Receitas saudáveis para o café da manhã","kb_body":"Experimente essas receitas deliciosas e saudáveis para começar o dia com energia.","kb_permalink":"receitas-cafe-da-manha","kb_keywords":"receitas, café da manhã, saudável","kb_liked_count":25,"kb_published":true,"kb_suggestion":true,"kb_featured":false,"kb_author_email":"lucia@example.com","kb_published_date":"2023-09-03"}]}
+{
+  "articles": [
+    {
+      "kb_id": "Xh7YtR9z4A1w",
+      "kb_title": "Como fazer bolo de chocolate",
+      "kb_body": "<h1>Como fazer bolo de chocolate</h1><p>Ingredientes:</p><ul><li>2 xícaras de farinha de trigo</li><li>1 xícara de cacau em pó</li><li>1 ½ xícara de açúcar</li><li>1 colher de chá de fermento em pó</li><li>½ colher de chá de bicarbonato de sódio</li><li>½ colher de chá de sal</li><li>2 ovos</li><li>1 xícara de leite</li><li>½ xícara de óleo vegetal</li><li>2 colheres de chá de essência de baunilha</li><li>1 xícara de água quente</li></ul><p>Instruções:</p><ol><li>Pré-aqueça o forno a 180°C. Unte e enfarinhe uma forma redonda de 23 cm de diâmetro.</li><li>Em uma tigela grande, peneire a farinha de trigo, o cacau em pó, o açúcar, o fermento, o bicarbonato de sódio e o sal. Misture bem.</li><li>Em outra tigela, bata os ovos, o leite, o óleo vegetal e a essência de baunilha até obter uma mistura homogênea.</li><li>Adicione a mistura líquida à mistura de ingredientes secos e mexa até ficar bem combinado.</li><li>Gradualmente, adicione a xícara de água quente à massa, mexendo continuamente até que a massa fique lisa.</li><li>Despeje a massa na forma preparada e leve ao forno por cerca de 30-35 minutos, ou até que um palito inserido no centro saia limpo.</li><li>Deixe o bolo esfriar na forma por 10 minutos antes de desenformar e transferir para uma grade para esfriar completamente.</li><li>Decore o bolo com ganache de chocolate, se desejar, e aproveite!</li></ol>",
+      "kb_permalink": "bolo-de-chocolate",
+      "kb_keywords": "receita, bolo, chocolate",
+      "kb_liked_count": 47,
+      "kb_published": true,
+      "kb_suggestion": false,
+      "kb_featured": true,
+      "kb_author_email": "maria@example.com",
+      "kb_published_date": "2023-09-10"
+    },
+    {
+      "kb_id": "6FbP2eGvQsJn",
+      "kb_title": "Dicas de jardinagem",
+      "kb_body": "<h1>Dicas de Jardinagem</h1><p>Confira estas dicas úteis para cuidar do seu jardim:</p><ul><li>Escolha plantas adequadas ao clima da sua região.</li><li>Regue suas plantas de acordo com as necessidades individuais de cada uma.</li><li>Realize a poda regularmente para manter as plantas saudáveis.</li><li>Use adubo orgânico para fertilizar o solo.</li><li>Proteja suas plantas de pragas e doenças.</li><li>Crie um espaço atraente e relaxante no seu jardim com mobiliário adequado.</li></ul>",
+      "kb_permalink": "dicas-de-jardinagem",
+      "kb_keywords": "jardinagem, dicas, plantas",
+      "kb_liked_count": 18,
+      "kb_published": true,
+      "kb_suggestion": true,
+      "kb_featured": false,
+      "kb_author_email": "joao@example.com",
+      "kb_published_date": "2023-09-05"
+    },
+    {
+      "kb_id": "KtW3dA7zYq1x",
+      "kb_title": "Melhores destinos para férias na praia",
+      "kb_body": "<h1>Melhores Destinos para Férias na Praia</h1><p>Descubra os destinos mais deslumbrantes para suas próximas férias na praia:</p><ul><li>Maldivas: Com suas praias de areia branca e águas cristalinas, as Maldivas são um paraíso tropical.</li><li>Havaí: Explore a beleza natural das ilhas havaianas e aproveite o surfe.</li><li>Bora Bora: Conhecida por seus bangalôs sobre a água, Bora Bora é perfeita para lua de mel.</li><li>Cancún: Oferece uma combinação de praias incríveis e vida noturna animada.</li><li>Ilhas Seychelles: Um destino tranquilo com praias intocadas e vida marinha exuberante.</li></ul>",
+      "kb_permalink": "destinos-ferias-na-praia",
+      "kb_keywords": "praia, férias, viagem",
+      "kb_liked_count": 60,
+      "kb_published": true,
+      "kb_suggestion": false,
+      "kb_featured": true,
+      "kb_author_email": "ana@example.com",
+      "kb_published_date": "2023-09-12"
+    },
+    {
+      "kb_id": "8sVnRfDpZb2T",
+      "kb_title": "Técnicas avançadas de programação em Python",
+      "kb_body": "<h1>Técnicas Avançadas de Programação em Python</h1><p>Aprenda algumas técnicas avançadas para aprimorar suas habilidades de programação em Python:</p><ul><li>Aprofunde-se em programação orientada a objetos.</li><li>Domine o uso de bibliotecas populares como NumPy e pandas.</li><li>Explore programação assíncrona para melhorar a eficiência.</li><li>Aprenda a criar aplicações web com frameworks como Django e Flask.</li><li>Pratique a resolução de problemas complexos com Python.</li></ul>",
+      "kb_permalink": "tecnicas-python-avancadas",
+      "kb_keywords": "Python, programação, técnicas avançadas",
+      "kb_liked_count": 43,
+      "kb_published": true,
+      "kb_suggestion": false,
+      "kb_featured": false,
+      "kb_author_email": "carlos@example.com",
+      "kb_published_date": "2023-09-08"
+    },
+    {
+      "kb_id": "QmX5lC4oPnVj",
+      "kb_title": "Receitas saudáveis para o café da manhã",
+      "kb_body": "<h1>Receitas Saudáveis para o Café da Manhã</h1><p>Experimente estas receitas deliciosas e saudáveis para começar o dia com energia:</p><ul><li>Smoothie de frutas: Misture frutas frescas com iogurte e mel.</li><li>Omelete de vegetais: Prepare uma omelete recheada com legumes e queijo.</li><li>Granola caseira: Faça sua própria granola com aveia, nozes e frutas secas.</li><li>Pão integral com abacate: Espalhe abacate em pão integral e adicione tomate e ovo pochê.</li><li>Papaya com chia: Misture chia com papaya e iogurte para uma opção saudável.</li></ul>",
+      "kb_permalink": "receitas-cafe-da-manha",
+      "kb_keywords": "receitas, café da manhã, saudável",
+      "kb_liked_count": 44,
+      "kb_published": true,
+      "kb_suggestion": true,
+      "kb_featured": false,
+      "kb_author_email": "lucia@example.com",
+      "kb_published_date": "2023-09-03"
+    }
+  ]
+}
