@@ -20,7 +20,7 @@
         background-color: #333;
         color: #fff;
         margin: 0;
-        margin-right: auto;
+        margin-right: auto; /* Push the h1 to the left */
     }
 
     header {
@@ -79,7 +79,7 @@
         padding: 10px 20px;
         cursor: pointer;
         font-size: 16px;
-        border-radius: 5px;
+        border-radius: 5px ;
         transition: 0.3s;
         width: 150px;
     }
@@ -88,6 +88,7 @@
         background-color: #007bff;
         color: #fff;
     }
+
 
     .like-button {
         background-color: #28a745;
@@ -106,68 +107,46 @@
         background-color: #218838;
     }
 
-    .like-button-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        margin-top: 20px;
-    }
-
-    .close-button {
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        padding: 10px 20px;
-        cursor: pointer;
-        font-size: 16px;
-        border-radius: 5px;
-        transition: background-color 0.3s;
-        margin-top: 10px;
-    }
-
-    .close-button:hover {
-        background-color: #024083;
-    }
-
     .dialog {
         display: none;
         position: fixed;
-        top: 0;
+        z-index: 1;
         left: 0;
+        top: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        z-index: 999;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.7);
     }
 
     .dialog-content {
         background-color: #fff;
-        border-radius: 5px;
-        max-width: 80%;
-        height: 30%;
-        margin: 10% auto;
+        margin: 15% auto;
         padding: 20px;
-        position: relative;
+        border: 1px solid #888;
+        width: 70%;
     }
 
     .close-button {
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        padding: 10px 10px;
+        color: #aaa;
+        font-size: 28px;
+        font-weight: bold;
         cursor: pointer;
-        font-size: 16px;
-        border-radius: 5px;
-        transition: background-color 0.3s;
-        position: absolute;
-        top: 10px;
-        right: 20px;
+        transition: 0.3s;
     }
 
-    .close-button:hover {
-        background-color: #024083;
+    .close-button:hover{
+        color: #333;
+    }
+
+    #like-button-dialog {
+        display: inline-block;
+        margin: 2rem 2rem;
+    }
+
+    #like-count-dialog {
+        display: inline-block;
+        margin: 0 2rem;
     }
 </style>
 
@@ -184,27 +163,21 @@
                 const featuredContainer = document.getElementById('featured-articles');
                 const mostLikedContainer = document.getElementById('most-liked-articles');
 
+                data.forEach(article => {
+                    const articleDiv = createArticleDiv(article);
+
+                    articlesContainer.appendChild(articleDiv);
+
+                    if (article.kb_featured) {
+                        featuredContainer.appendChild(articleDiv.cloneNode(true));
+                    }
+                });
+
                 const mostLikedArticles = data.slice().sort((a, b) => b.kb_liked_count - a.kb_liked_count).slice(0, 10);
 
                 mostLikedArticles.forEach(article => {
                     const articleDiv = createArticleDiv(article);
                     mostLikedContainer.appendChild(articleDiv);
-                });
-
-                const newData = data.filter(article => !mostLikedArticles.includes(article));
-
-                newData.forEach(article => {
-                    if (mostLikedArticles.includes(article)) {
-                        return;
-                    }
-
-                    const articleDiv = createArticleDiv(article);
-
-                    if (article.kb_featured) {
-                        featuredContainer.appendChild(articleDiv);
-                    } else {
-                        articlesContainer.appendChild(articleDiv);
-                    }
                 });
             });
     }
@@ -218,14 +191,6 @@
 
         const content = document.createElement('p');
         content.textContent = article.kb_body;
-
-        const readMoreButton = document.createElement('button');
-        readMoreButton.textContent = 'Ler Mais';
-        readMoreButton.classList.add('read-button');
-        readMoreButton.addEventListener('click', () => {
-            showArticleDialog(article.kb_title, article.kb_body, article.kb_id);
-        });
-
 
         const likeCount = document.createElement('span');
         likeCount.textContent = `Curtidas: ${article.kb_liked_count}`;
@@ -247,50 +212,11 @@
         });
 
         articleDiv.appendChild(title);
-        articleDiv.appendChild(readMoreButton);
+        articleDiv.appendChild(readButton);
         articleDiv.appendChild(likeButton);
         articleDiv.appendChild(likeCount);
 
-
         return articleDiv;
-    }
-
-    function showArticleDialog(articleTitle, articleBody, articleId) {
-        const dialog = document.getElementById('article-dialog');
-        const articleTitleElement = document.getElementById('article-title');
-        const articleContent = document.getElementById('article-content');
-
-        articleTitleElement.textContent = articleTitle;
-        articleContent.innerHTML = articleBody;
-
-        dialog.style.display = 'block';
-
-        dialog.addEventListener('click', function (event) {
-            if (event.target === dialog) {
-                dialog.style.display = 'none';
-            }
-        });
-
-        const likeButton = document.createElement('button');
-        likeButton.textContent = 'Curtir';
-        likeButton.classList.add('like-button');
-        likeButton.addEventListener('click', () => {
-            likeArticle(articleId);
-        });
-
-        const likeButtonContainer = document.createElement('div');
-        likeButtonContainer.classList.add('like-button-container');
-        likeButtonContainer.appendChild(likeButton);
-
-        const closeButton = document.createElement('button');
-        closeButton.textContent = 'Fechar';
-        closeButton.classList.add('close-button');
-        closeButton.addEventListener('click', function () {
-            dialog.style.display = 'none';
-        });
-
-        articleContent.appendChild(likeButtonContainer);
-        articleContent.appendChild(closeButton);
     }
 
     function likeArticle(id) {
@@ -368,14 +294,22 @@
     <div id="most-liked-articles">
         <h2>Artigos Mais Curtidos</h2>
     </div>
-  
-    <div id="article-dialog" class="dialog">
-        <div class="dialog-content">
-            <h2 id="article-title"></h2>
-            <div id="article-content"></div>
-        </div>
+
+    <div id="articles">
+        <h2>Artigos</h2>
     </div>
 
+    <div id="article-dialog" class="dialog">
+        <div class="dialog-content">
+            <span id="close-dialog" class="close-button" onclick="closeDialog()">&times;</span>
+            <div id="article-content"></div>
+            <div>
+                <button id="like-button-dialog" class="like-button" onclick="likeArticleDialog()">Curtir</button>
+                <span id="like-count-dialog">Curtidas: 0</span>
+            </div>
+        </div>
+    </div>    
+    
 </body>
 
 </html>
