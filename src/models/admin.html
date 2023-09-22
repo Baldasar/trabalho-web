@@ -59,6 +59,7 @@
     form {
         display: flex;
         flex-direction: column;
+        margin: 10px 0 20px 0;
     }
 
     label {
@@ -96,11 +97,12 @@
 
     #menu {
         display: flex;
-        justify-content: center;
-        margin-bottom: 20px;
+        justify-content: space-around;
     }
 
     .menu-button {
+        margin: 20px 0;
+        flex-grow: 1;
         background-color: #555;
         color: #fff;
         padding: 10px 20px;
@@ -122,7 +124,7 @@
     table {
         width: 100%;
         border-collapse: collapse;
-        margin-top: 20px;
+        margin: 20px 5px;
     }
 
     th,
@@ -355,7 +357,7 @@
 <body>
     <header>
         <h1>Criação</h1>
-        <button onclick="goToHome()"> Home </button>
+        <button onclick="goToHome()"> Voltar </button>
     </header>
     <div class="container">
         <div id="menu">
@@ -445,17 +447,17 @@
             <table>
                 <thead>
                     <tr>
-                        <th>id</th>
+                        <th>ID</th>
                         <th>Título</th>
                         <th>Corpo</th>
                         <th>Permalink</th>
                         <th>Palavras-chave</th>
-                        <th>Número de Curtidas</th>
+                        <th>Curtidas</th>
                         <th>Publicado</th>
                         <th>Sugestão</th>
                         <th>Destaque</th>
                         <th>E-mail do Autor</th>
-                        <th>Data de Publicação</th>
+                        <th>Publicação</th>
                     </tr>
                 </thead>
                 <tbody id="tableBody">
@@ -467,7 +469,7 @@
             <table>
                 <thead>
                     <tr>
-                        <th>id</th>
+                        <th>ID</th>
                         <th>Nome</th>
                         <th>E-mail</th>
                         <th>Usuário</th>

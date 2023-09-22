@@ -239,6 +239,13 @@
             likeArticle(article.kb_id);
         });
 
+        const readButton = document.createElement('button');
+        readButton.textContent = 'Leia Mais';
+        readButton.classList.add('read-button');
+        readButton.addEventListener('click', () => {
+            showArticleContent(article);
+        });
+
         articleDiv.appendChild(title);
         articleDiv.appendChild(readMoreButton);
         articleDiv.appendChild(likeButton);
@@ -304,18 +311,51 @@
     function goToLogin() {
         window.location.href = "http://localhost:3000/login";
     }
+
+    function showArticleContent(article) {
+        const articleContent = document.getElementById('article-content');
+        articleContent.innerHTML = article.kb_body;
+
+        const likeButtonDialog = document.getElementById('like-button-dialog');
+        const likeCountDialog = document.getElementById('like-count-dialog');
+
+        likeButtonDialog.dataset.id = article.kb_id;
+        likeButtonDialog.addEventListener('click', () => {
+            likeArticleDialog(article.kb_id, likeCountDialog);
+        });
+
+        const dialog = document.getElementById('article-dialog');
+        dialog.style.display = 'block';
+
+        fetch(`/articles/${article.kb_id}/like`)
+            .then(response => response.json())
+            .then(data => {
+                likeCountDialog.textContent = `Curtidas: ${data.kb_liked_count}`;
+            });
+    }
+
+    function likeArticleDialog(id, likeCountElement) {
+        fetch(`/articles/${id}/like`, {
+            method: 'POST'
+        })
+            .then(response => response.json())
+            .then(data => {
+                likeCountElement.textContent = `Curtidas: ${data.kb_liked_count}`;
+            });
+    }
+
+    function closeDialog() {
+        const dialog = document.getElementById('article-dialog');
+        dialog.style.display = 'none';
+    }
 </script>
 
 <body>
     <header>
-        <h1>Home</h1>
+        <h1>Início</h1>
         <button onclick="goToAdmin()">Administrador</button>
         <button onclick="goToLogin()">Login</button>
     </header>
-
-    <div id="articles">
-        <h2>Artigos</h2>
-    </div>
 
     <div id="featured-articles">
         <h2>Artigos em Destaque</h2>
@@ -324,7 +364,7 @@
     <div id="most-liked-articles">
         <h2>Artigos Mais Curtidos</h2>
     </div>
-
+  
     <div id="article-dialog" class="dialog">
         <div class="dialog-content">
             <h2 id="article-title"></h2>
